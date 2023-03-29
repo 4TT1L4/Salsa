@@ -90,10 +90,111 @@ body {font-family: "Lato", sans-serif;}
 var courses = {
   "Basic 1" : 
     [
-	  {
-	    "footwork": { "name":"FW", "link":"https://photos.google.com/photo/AF1QipMFJP-5hopV1lV4LXptwqBQdN8UREk6v5TQbIem"},
-		"partnerwork" : { "name":"PW", "link":"https://photos.google.com/photo/AF1QipMFJP-5hopV1lV4LXptwqBQdN8UREk6v5TQbIem"},
-	  }
+	  { // 1:
+	    "footwork"   : [ "Side step", ""],
+		"partnerwork": [ "Basic step", ""],
+	  },
+	  { // 2:
+	    "footwork"   : [ "Left turn simplified", ""],
+		"partnerwork": [ "Left turn", ""],
+	  },
+	  { // 3:
+	    "footwork"   : [ "Macho step, right turn", ""],
+		"partnerwork": [ "Cross body", ""],
+	  },
+	  { // 4:
+	    "footwork"   : [ "Parabrisas / back basic", ""],
+		"partnerwork": [ "Combo with Caress", ""],
+	  },
+	  { // 5:
+	    "footwork"   : [ "Combo", ""],
+		"partnerwork": [ "Me and you", ""],
+	  },
+	  { // 6:
+	    "footwork"   : [ "Combo repeat", ""],
+		"partnerwork": [ "You and me", ""],
+	  },
+	],
+  "Basic 2" : 
+    [
+	  { // 1:
+	    "footwork"   : [ "Side step", ""],
+		"partnerwork": [ "Basic step", ""],
+	  },
+	  { // 2:
+	    "footwork"   : [ "Left turn simplified", ""],
+		"partnerwork": [ "Left turn", ""],
+	  },
+	  { // 3:
+	    "footwork"   : [ "Macho step, right turn", ""],
+		"partnerwork": [ "Cross body", ""],
+	  },
+	  { // 4:
+	    "footwork"   : [ "Parabrisas / back basic", ""],
+		"partnerwork": [ "Combo with Caress", ""],
+	  },
+	  { // 5:
+	    "footwork"   : [ "Combo", ""],
+		"partnerwork": [ "Me and you", ""],
+	  },
+	  { // 6:
+	    "footwork"   : [ "Combo repeat", ""],
+		"partnerwork": [ "You and me", ""],
+	  },
+	],
+  "Basic 3" : 
+    [
+	  { // 1:
+	    "footwork"   : [ "Side step", ""],
+		"partnerwork": [ "Basic step", ""],
+	  },
+	  { // 2:
+	    "footwork"   : [ "Left turn simplified", ""],
+		"partnerwork": [ "Left turn", ""],
+	  },
+	  { // 3:
+	    "footwork"   : [ "Macho step, right turn", ""],
+		"partnerwork": [ "Cross body", ""],
+	  },
+	  { // 4:
+	    "footwork"   : [ "Parabrisas / back basic", ""],
+		"partnerwork": [ "Combo with Caress", ""],
+	  },
+	  { // 5:
+	    "footwork"   : [ "Combo", ""],
+		"partnerwork": [ "Me and you", ""],
+	  },
+	  { // 6:
+	    "footwork"   : [ "Combo repeat", ""],
+		"partnerwork": [ "You and me", ""],
+	  },
+	],
+  "Basic 4" : 
+    [
+	  { // 1:
+	    "footwork"   : [ "Side step", ""],
+		"partnerwork": [ "Basic step", ""],
+	  },
+	  { // 2:
+	    "footwork"   : [ "Left turn simplified", ""],
+		"partnerwork": [ "Left turn", ""],
+	  },
+	  { // 3:
+	    "footwork"   : [ "Macho step, right turn", ""],
+		"partnerwork": [ "Cross body", ""],
+	  },
+	  { // 4:
+	    "footwork"   : [ "Parabrisas / back basic", ""],
+		"partnerwork": [ "Combo with Caress", ""],
+	  },
+	  { // 5:
+	    "footwork"   : [ "Combo", ""],
+		"partnerwork": [ "Me and you", ""],
+	  },
+	  { // 6:
+	    "footwork"   : [ "Combo repeat", ""],
+		"partnerwork": [ "You and me", ""],
+	  },
 	],
 }
 
@@ -102,14 +203,14 @@ var courses = {
 // add tabs and content:
 Object.keys(courses).forEach(key=>
 {
-  $('#tabs').append($("<button class='tablinks' onclick=\"openCity(event, '"+key+"')\">"+key+"</button>"));    
+  $('#tabs').append($("<button id='"+key+" Tab' class='tablinks' onclick=\"openCity(event, '"+key+"')\">"+key+"</button>"));    
   
   var nr=0;
   var table = '<table id="moves"><tr><th>#<th>Footwork<th>Partnerwork';
-  courses[key].forEach( item => table = table + "<tr><td>"+(++nr)+"<td><a target='_blank' href='"+item.footwork.link+"'>"+item.footwork.name + "</a><td>" + item.partnerwork.name );
+  courses[key].forEach( item => table = table + "<tr><td>"+(++nr)+"<td><a target='_blank' href='"+item.footwork[1]+"'>"+item.footwork[0] + "</a><td><a target='_blank' href='"+item.partnerwork[1]+"'>"+item.partnerwork[0] + "</a>");
   table = table + "</table>";
   
-  $('#content').append($('<div id="'+key+'" class="tabcontent"><h3>'+key+'</h3>' + table +'</div>'));
+  $('#content').append($('<div style="display:none;" id="'+key+'" class="tabcontent"><h3>'+key+'</h3>' + table +'</div>'));
   
   $('#'+key).append($(courses[key]));
 })   
@@ -129,7 +230,7 @@ function openCity(evt, cityName) {
 }
 
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementById("Basic 1 Tab").click();
 </script>
    
 </body>
