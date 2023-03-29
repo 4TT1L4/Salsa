@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box}
@@ -11,8 +12,8 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  width: 30%;
-  height: 300px;
+  width: 200px;
+  height: 1000px;
 }
 
 /* Style the buttons inside the tab */
@@ -45,39 +46,74 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
-  width: 70%;
+  width: 800px;
   border-left: none;
-  height: 300px;
+  height: 1000px;
+}
+
+#moves {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#moves td, #moves th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#moves tr:nth-child(even){background-color: #f2f2f2;}
+
+#moves tr:hover {background-color: #ddd;}
+
+#moves th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #14846D;
+  color: white;
 }
 </style>
 </head>
 <body>
 
-<h2>Vertical Tabs</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
-
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+<h2>Salsa Classes</h2>
+<p>Click on the buttons for the course contents</p>
+<div id="content">
+<div id="tabs" class="tab">
 </div>
 
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
 </div>
-
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-
 <script>
+
+/// courses
+var courses = {
+  "Basic 1" : 
+    [
+	  {
+	    "footwork": { "name":"FW", "link":"https://photos.google.com/photo/AF1QipMFJP-5hopV1lV4LXptwqBQdN8UREk6v5TQbIem"},
+		"partnerwork" : { "name":"PW", "link":"https://photos.google.com/photo/AF1QipMFJP-5hopV1lV4LXptwqBQdN8UREk6v5TQbIem"},
+	  }
+	],
+}
+
+// Create the content
+
+// add tabs and content:
+Object.keys(courses).forEach(key=>
+{
+  $('#tabs').append($("<button class='tablinks' onclick=\"openCity(event, '"+key+"')\">"+key+"</button>"));    
+  
+  var nr=0;
+  var table = '<table id="moves"><tr><th>#<th>Footwork<th>Partnerwork';
+  courses[key].forEach( item => table = table + "<tr><td>"+(++nr)+"<td><a target='_blank' href='"+item.footwork.link+"'>"+item.footwork.name + "</a><td>" + item.partnerwork.name );
+  table = table + "</table>";
+  
+  $('#content').append($('<div id="'+key+'" class="tabcontent"><h3>'+key+'</h3>' + table +'</div>'));
+  
+  $('#'+key).append($(courses[key]));
+})   
+  
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
