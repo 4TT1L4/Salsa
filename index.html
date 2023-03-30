@@ -118,55 +118,55 @@ var courses = {
   "Basic 2" : 
     [
 	  { // 1:
-	    "footwork"   : [ "Side step", ""],
-		"partnerwork": [ "Basic step", ""],
+	    "footwork"   : [ "Left Turn", ""],
+		"partnerwork": [ "Enschufla", ""],
 	  },
 	  { // 2:
-	    "footwork"   : [ "Left turn simplified", ""],
-		"partnerwork": [ "Left turn", ""],
+	    "footwork"   : [ "Left tun varition", ""],
+		"partnerwork": [ "Enschufla with left turn", ""],
 	  },
 	  { // 3:
-	    "footwork"   : [ "Macho step, right turn", ""],
-		"partnerwork": [ "Cross body", ""],
+	    "footwork"   : [ "Hook Turn", ""],
+		"partnerwork": [ "Enschufla with hook turn", ""],
 	  },
 	  { // 4:
-	    "footwork"   : [ "Parabrisas / back basic", ""],
-		"partnerwork": [ "Combo with Caress", ""],
+	    "footwork"   : [ "Suzy Q", ""],
+		"partnerwork": [ "Enschufla Double", ""],
 	  },
 	  { // 5:
-	    "footwork"   : [ "Combo", ""],
-		"partnerwork": [ "Me and you", ""],
+	    "footwork"   : [ "In-Out Suzy-Q", ""],
+		"partnerwork": [ "Hammerlock / Sedenta", ""],
 	  },
 	  { // 6:
-	    "footwork"   : [ "Combo repeat", ""],
-		"partnerwork": [ "You and me", ""],
+	    "footwork"   : [ "In-Out Step", ""],
+		"partnerwork": [ "Hamerlock + Caress", ""],
 	  },
 	],
   "Basic 3" : 
     [
 	  { // 1:
-	    "footwork"   : [ "Side step", ""],
-		"partnerwork": [ "Basic step", ""],
+	    "footwork"   : [ "Inside Turn", ""],
+		"partnerwork": [ "Sedenta / Hammerlock", "https://photos.google.com/photo/AF1QipP7paD45P5kXar-Dw4UBE0iMBg7Zli97mneux6N"],
 	  },
 	  { // 2:
-	    "footwork"   : [ "Left turn simplified", ""],
-		"partnerwork": [ "Left turn", ""],
+	    "footwork"   : [ "Inside Turn Repeat", ""],
+		"partnerwork": [ "Inside Turn Combi", ""],
 	  },
 	  { // 3:
-	    "footwork"   : [ "Macho step, right turn", ""],
-		"partnerwork": [ "Cross body", ""],
+	    "footwork"   : [ "Outside Turn", ""],
+		"partnerwork": [ "Inside Turn Combi 2", ""],
 	  },
 	  { // 4:
-	    "footwork"   : [ "Parabrisas / back basic", ""],
-		"partnerwork": [ "Combo with Caress", ""],
+	    "footwork"   : [ "Outside Turn Repeat", ""],
+		"partnerwork": [ "Outside Turn", ""],
 	  },
 	  { // 5:
-	    "footwork"   : [ "Combo", ""],
-		"partnerwork": [ "Me and you", ""],
+	    "footwork"   : [ "Side Suzy Q", ""],
+		"partnerwork": [ "Outside Turn", ""],
 	  },
 	  { // 6:
-	    "footwork"   : [ "Combo repeat", ""],
-		"partnerwork": [ "You and me", ""],
+	    "footwork"   : [ "El Lado Suzy Q", ""],
+		"partnerwork": [ "Outside Turn Combination", ""],
 	  },
 	],
   "Basic 4" : 
@@ -206,7 +206,7 @@ Object.keys(courses).forEach(key=>
   $('#tabs').append($("<button id='"+key+" Tab' class='tablinks' onclick=\"openCity(event, '"+key+"')\">"+key+"</button>"));    
   
   var nr=0;
-  var table = '<table id="moves"><tr><th>#<th>Footwork<th>Partnerwork';
+  var table = '<table id="moves"><tr><th style="width:35px;">#<th style="width:250px;">Footwork<th style="width:250px;">Partnerwork';
   courses[key].forEach( item => table = table + "<tr><td>"+(++nr)+"<td><a target='_blank' href='"+item.footwork[1]+"'>"+item.footwork[0] + "</a><td><a target='_blank' href='"+item.partnerwork[1]+"'>"+item.partnerwork[0] + "</a>");
   table = table + "</table>";
   
