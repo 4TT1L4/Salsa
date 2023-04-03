@@ -142,10 +142,8 @@ Object.keys(courses).forEach(key=>
 document.getElementById("Basic 1 Tab").click();
 }
 
-yamlContent=`
 
-
-`;
+$.get( "content.yaml", function( content ) {
 
   requirejs.config({
     paths: {
@@ -153,7 +151,7 @@ yamlContent=`
     }
   });
   requirejs(['js-yaml'], function (yaml) {
-    data = yaml.loadAll(yamlContent);
+    data = yaml.loadAll(content);
     console.log(JSON.stringify(data, undefined, 2));
     createContent(data[0]) 
   });
