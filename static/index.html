@@ -30,7 +30,7 @@
       display: block;
       background-color: inherit;
       color: black;
-      padding: 22px 16px;
+      padding: 15px 16px;
       width: 100%;
       border: none;
       outline: none;
@@ -154,18 +154,19 @@
         table = table + "</table>";
 
         $('#content').append($('<div style="display:none;" id="' + key + '" class="tabcontent"><h3>' + key + '</h3>' + table + '</div>'));
-
-        //$('#' + key).append($(courses[key]));
       })
 
       // Get the element with id="defaultOpen" and click on it
       var lastCourse = window.localStorage.getItem('lastCourseName');
       if (typeof(lastCourse) == "undefined") {
+        // Fallback: no lastCourName available in localStorage.
         lastCourse = "Basic 1";
        }
        document.getElementById(lastCourse + " Tab").click();
     }
-
+    function showError(errorName, errorMsg) {
+       $('#content').append("<h1><div style='padding:250px'>⚠️" + errorName +"⚠️<pre><code> " + errorMsg +"</code></pre></h1></div>");
+    }
     requirejs.config({
       paths: {
         'js-yaml': 'https://unpkg.com/js-yaml@4.1.0/dist/js-yaml'
@@ -174,9 +175,15 @@
     requirejs(['js-yaml'], function (yaml) {
 
       $.get("content.yaml", function (data) {
-        data = yaml.loadAll(data);
-        console.log(JSON.stringify(data, undefined, 2));
-        createContent(data[0])
+        try {
+          data = yaml.loadAll(data);
+          console.log(JSON.stringify(data, undefined, 2));
+          createContent(data[0])
+        }
+        catch (exceptionVar) {
+           console.error(exceptionVar);
+           showError(exceptionVar.name, exceptionVar.message)
+        }
       });
     });
 
