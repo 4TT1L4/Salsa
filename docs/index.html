@@ -21,7 +21,7 @@
       float: left;
       border: 1px solid #ccc;
       background-color: #f1f1f1;
-      width: 150px;
+      width: 200px;
       height: 1250px;
     }
 
@@ -37,7 +37,7 @@
       text-align: left;
       cursor: pointer;
       transition: 0.3s;
-      font-size: 17px;
+      font-size: 20px;
     }
 
     /* Change background color of buttons on hover */
@@ -55,7 +55,8 @@
       float: left;
       padding: 0px 12px;
       border: 1px solid #ccc;
-      width: 800px;
+      font-size: 20px;
+      width:calc(100%);;
       border-left: none;
       height: 1250px;
     }
@@ -63,7 +64,7 @@
     #moves {
       font-family: Arial, Helvetica, sans-serif;
       border-collapse: collapse;
-      width: 100%;
+      width:100%;
     }
 
     #moves td,
@@ -94,7 +95,7 @@
   <div id="content">
     <div id="tabs" class="tab" style="display:inline-block;">
     </div>
-    <div id="right-bar" style="display:inline-block;">
+    <div id="right-bar" style="display:inline-block;width:calc(100% - 200px);max-width:1000px;">
     </div>
   </div>
   <script>
@@ -104,12 +105,12 @@
     });
 
     let value = params.mambo;
-	if (value == null) {
-	   console.log("Nope.");
-	   document.title="Nope."
-	   document.getElementById('content').innerHTML = 'Nope.';
-	   throw new Error("Nope.");
-	}
+    if (value == null) {
+       console.log("Nope.");
+       document.title="Nope."
+       document.getElementById('content').innerHTML = 'Nope.';
+       throw new Error("Nope.");
+    }
 
     function openCourse(evt, courseName) {
       window.localStorage.setItem('lastCourseName', courseName);
@@ -135,7 +136,7 @@
         $('#tabs').append($("<button id='" + key + " Tab' class='tablinks' onclick=\"openCourse(event, '" + key + "')\">" + key + "</button>"));
 
         var nr = 0;
-        var table = '<table id="moves"><tr><th style="width:25px;">#<th style="width:200px;"><th style="width:200px;">';
+        var table = '<table id="moves"><tr><th style="width:20px;">#<th style="width:250px;"><th style="width:250px;">';
         courses[key].forEach(item => {
 
           if (nr % 2 == 0) {
