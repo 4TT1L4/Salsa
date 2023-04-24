@@ -7,7 +7,6 @@
   <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
       box-sizing: border-box
@@ -22,7 +21,7 @@
       float: left;
       border: 1px solid #ccc;
       background-color: #f1f1f1;
-      width: 200px;
+      width: 150px;
       height: 1250px;
     }
 
@@ -93,9 +92,10 @@
 
 <body>
   <div id="content">
-    <div id="tabs" class="tab">
+    <div id="tabs" class="tab" style="display:inline-block;">
     </div>
-
+    <div id="right-bar" style="display:inline-block;">
+    </div>
   </div>
   <script>
 
@@ -135,7 +135,7 @@
         $('#tabs').append($("<button id='" + key + " Tab' class='tablinks' onclick=\"openCourse(event, '" + key + "')\">" + key + "</button>"));
 
         var nr = 0;
-        var table = '<table id="moves"><tr><th style="width:35px;">#<th style="width:250px;"><th style="width:250px;">';
+        var table = '<table id="moves"><tr><th style="width:25px;">#<th style="width:200px;"><th style="width:200px;">';
         courses[key].forEach(item => {
 
           if (nr % 2 == 0) {
@@ -166,7 +166,7 @@
         });
         table = table + "</table>";
 
-        $('#content').append($('<div style="display:none;" id="' + key + '" class="tabcontent"><h3>' + key + '</h3>' + table + '</div>'));
+        $('#right-bar').append($('<div style="display:none;" id="' + key + '" class="tabcontent"><h3>' + key + '</h3>' + table + '</div>'));
       })
 
       // Get the element with id="defaultOpen" and click on it
