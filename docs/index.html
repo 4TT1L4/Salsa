@@ -99,6 +99,18 @@
   </div>
   <script>
 
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+     get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+    let value = params.mambo;
+	if (value == null) {
+	   console.log("Nope.");
+	   document.title="Nope."
+	   document.getElementById('content').innerHTML = 'Nope.';
+	   throw new Error("Nope.");
+	}
+
     function openCourse(evt, courseName) {
       window.localStorage.setItem('lastCourseName', courseName);
       var i, tabcontent, tablinks;
